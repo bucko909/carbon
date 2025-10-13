@@ -21,9 +21,9 @@ class CarbonLogFile(DailyLogFile):
     """
     openMode = self.defaultMode or 0o777
     # Fix >= Python3.8 raises RuntimeWarning: line buffering (buffering=1) isn't supported in binary mode  # NOQA
-    python_version = '%s.%s.%s' % (str(version_info[0]), str(version_info[1]), str(version_info[2]))
+    python_version = version_info[:3]
     use_buffering = 0
-    if python_version < '3.8.0':
+    if python_version < (3, 8, 0):
       use_buffering = 1
     self._file = os.fdopen(os.open(
       self.path, os.O_CREAT | os.O_RDWR, openMode), 'rb+', use_buffering)
