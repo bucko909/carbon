@@ -6,6 +6,7 @@ from twisted.internet.task import LoopingCall
 from carbon import instrumentation
 from carbon.aggregator.buffers import BufferManager, IntervalBuffer, MetricBuffer
 from carbon.tests.util import TestSettings
+import carbon.service  # creates carbon.state.events
 
 
 class AggregationBufferManagerTest(TestCase):
